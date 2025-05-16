@@ -22,3 +22,26 @@ button {
 .error {
   color: red;
 }
+
+.cta-my-files {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.folder-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}

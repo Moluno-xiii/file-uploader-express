@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Folder details</title>
+  </head>
+  <body>
+    <% if (folder) { %>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <h1>Folder details</h1>
+      <div class="folder-details">
+        <p style="font-size: large; color: aqua; text-transform: uppercase">
+          <%= folder.name %>
+        </p>
+        <p>Date created : <%= folder.date_created %></p>
+        <p>Date updated : <%= folder.date_updated %></p>
+      </div>
+
+      <% if (folderFiles.length > 0) { %>
+      <ul style="display: flex; flex-direction: column; gap: 20px">
+        <% folderFiles.forEach((file) => { %>
+        <li style="display: flex; flex-direction: column; gap: 5px">
+          <p>File name : <%= file.name %></p>
+          <img src="<%= file.file_url %>" alt="image <%= file.name %>" />
+          <p>upload date : <%= file.upload_date %></p>
+          <p>Size : <%= file.size / 1000 %> KB</p>
+        </li>
+        <%})%>
+      </ul>
+      <%} else {%>
+      <p>
+        You don't have any files in this folder, files you add to this folder
+        will appear here.
+      </p>
+      <% } %>
+      <form action="/my-folders/<%= folder.id %>" method="post">
+        <input name="folderId" type="hidden" value="<%= folder.id %>" />
+        <button type="submit">delete folder</button>
+      </form>
+    </div>
+    <%} else { %>
+    <p>Folder doesn't exist</p>
+    <%}%>
+  </body>
+</html>

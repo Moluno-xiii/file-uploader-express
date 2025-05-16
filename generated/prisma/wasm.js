@@ -129,6 +129,24 @@ exports.Prisma.UsersScalarFieldEnum = {
   hashed_password: 'hashed_password'
 };
 
+exports.Prisma.FolderScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  date_created: 'date_created',
+  date_updated: 'date_updated',
+  owner_id: 'owner_id'
+};
+
+exports.Prisma.FileScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  upload_date: 'upload_date',
+  size: 'size',
+  owner_id: 'owner_id',
+  folder_id: 'folder_id',
+  file_url: 'file_url'
+};
+
 exports.Prisma.SessionScalarFieldEnum = {
   id: 'id',
   sid: 'sid',
@@ -146,9 +164,16 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   users: 'users',
+  folder: 'folder',
+  file: 'file',
   Session: 'Session'
 };
 

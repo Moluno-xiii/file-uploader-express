@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>My Folders</title>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <h1>My Folders</h1>
+      <button style="padding: 3px">
+        <a href="/my-folders/new"> Create new folder </a>
+      </button>
+    </div>
+
+    <% if (folders.length > 0) { %> <% folders.forEach((folder) => { %>
+    <div class="folder-details">
+      <p style="font-size: large; color: aqua; text-transform: uppercase">
+        <%= folder.name %>
+      </p>
+      <p>Date created : <%= folder.date_created %></p>
+      <p>Date updated : <%= folder.date_updated %></p>
+      <button>
+        <a href="/my-folders/<%= folder.id %>"> View folder </a>
+      </button>
+    </div>
+    <%}) %> <% }else {%>
+    <p>You have no folders, folders you add will appear here</p>
+    <% } %>
+  </body>
+</html>

@@ -10,6 +10,9 @@ import signupRoute from "./routes/signupRoute";
 import passport from "passport";
 import { initializePassport } from "./config/passport";
 import logoutRoute from "./routes/logoutRoute";
+import uploadFileRoute from "./routes/uploadFileRoute";
+import myFilesRoute from "./routes/myFilesRoute";
+import myFoldersRoute from "./routes/myFoldersRoute";
 
 const app = express();
 
@@ -47,6 +50,9 @@ app.use("/", indexRoute);
 app.use("/login", loginRoute);
 app.use("/signup", signupRoute);
 app.use("/logout", logoutRoute);
+app.use("/upload", uploadFileRoute);
+app.use("/my-files", myFilesRoute);
+app.use("/my-folders", myFoldersRoute);
 
 app.use(errorHandler);
 app.use((req: Request, res: Response) => {

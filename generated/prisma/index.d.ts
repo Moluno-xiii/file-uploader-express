@@ -19,6 +19,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 /**
+ * Model folder
+ * 
+ */
+export type folder = $Result.DefaultSelection<Prisma.$folderPayload>
+/**
+ * Model file
+ * 
+ */
+export type file = $Result.DefaultSelection<Prisma.$filePayload>
+/**
  * Model Session
  * 
  */
@@ -158,6 +168,26 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.folder`: Exposes CRUD operations for the **folder** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Folders
+    * const folders = await prisma.folder.findMany()
+    * ```
+    */
+  get folder(): Prisma.folderDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.file`: Exposes CRUD operations for the **file** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Files
+    * const files = await prisma.file.findMany()
+    * ```
+    */
+  get file(): Prisma.fileDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.session`: Exposes CRUD operations for the **Session** model.
@@ -609,6 +639,8 @@ export namespace Prisma {
 
   export const ModelName: {
     users: 'users',
+    folder: 'folder',
+    file: 'file',
     Session: 'Session'
   };
 
@@ -628,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "session"
+      modelProps: "users" | "folder" | "file" | "session"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -703,6 +735,154 @@ export namespace Prisma {
           count: {
             args: Prisma.usersCountArgs<ExtArgs>
             result: $Utils.Optional<UsersCountAggregateOutputType> | number
+          }
+        }
+      }
+      folder: {
+        payload: Prisma.$folderPayload<ExtArgs>
+        fields: Prisma.folderFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.folderFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.folderFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>
+          }
+          findFirst: {
+            args: Prisma.folderFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.folderFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>
+          }
+          findMany: {
+            args: Prisma.folderFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>[]
+          }
+          create: {
+            args: Prisma.folderCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>
+          }
+          createMany: {
+            args: Prisma.folderCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.folderCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>[]
+          }
+          delete: {
+            args: Prisma.folderDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>
+          }
+          update: {
+            args: Prisma.folderUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>
+          }
+          deleteMany: {
+            args: Prisma.folderDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.folderUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.folderUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>[]
+          }
+          upsert: {
+            args: Prisma.folderUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$folderPayload>
+          }
+          aggregate: {
+            args: Prisma.FolderAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFolder>
+          }
+          groupBy: {
+            args: Prisma.folderGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FolderGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.folderCountArgs<ExtArgs>
+            result: $Utils.Optional<FolderCountAggregateOutputType> | number
+          }
+        }
+      }
+      file: {
+        payload: Prisma.$filePayload<ExtArgs>
+        fields: Prisma.fileFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.fileFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.fileFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>
+          }
+          findFirst: {
+            args: Prisma.fileFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.fileFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>
+          }
+          findMany: {
+            args: Prisma.fileFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>[]
+          }
+          create: {
+            args: Prisma.fileCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>
+          }
+          createMany: {
+            args: Prisma.fileCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.fileCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>[]
+          }
+          delete: {
+            args: Prisma.fileDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>
+          }
+          update: {
+            args: Prisma.fileUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>
+          }
+          deleteMany: {
+            args: Prisma.fileDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.fileUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.fileUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>[]
+          }
+          upsert: {
+            args: Prisma.fileUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$filePayload>
+          }
+          aggregate: {
+            args: Prisma.FileAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFile>
+          }
+          groupBy: {
+            args: Prisma.fileGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FileGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.fileCountArgs<ExtArgs>
+            result: $Utils.Optional<FileCountAggregateOutputType> | number
           }
         }
       }
@@ -865,6 +1045,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     users?: usersOmit
+    folder?: folderOmit
+    file?: fileOmit
     session?: SessionOmit
   }
 
@@ -954,6 +1136,76 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type UsersCountOutputType
+   */
+
+  export type UsersCountOutputType = {
+    folders: number
+    file: number
+  }
+
+  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    folders?: boolean | UsersCountOutputTypeCountFoldersArgs
+    file?: boolean | UsersCountOutputTypeCountFileArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UsersCountOutputType
+     */
+    select?: UsersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountFoldersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: folderWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountFileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fileWhereInput
+  }
+
+
+  /**
+   * Count Type FolderCountOutputType
+   */
+
+  export type FolderCountOutputType = {
+    files: number
+  }
+
+  export type FolderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    files?: boolean | FolderCountOutputTypeCountFilesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FolderCountOutputType without action
+   */
+  export type FolderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FolderCountOutputType
+     */
+    select?: FolderCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FolderCountOutputType without action
+   */
+  export type FolderCountOutputTypeCountFilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fileWhereInput
+  }
 
 
   /**
@@ -1166,6 +1418,9 @@ export namespace Prisma {
     email?: boolean
     date_created?: boolean
     hashed_password?: boolean
+    folders?: boolean | users$foldersArgs<ExtArgs>
+    file?: boolean | users$fileArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
   export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1196,10 +1451,20 @@ export namespace Prisma {
   }
 
   export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstname" | "lastname" | "email" | "date_created" | "hashed_password", ExtArgs["result"]["users"]>
+  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    folders?: boolean | users$foldersArgs<ExtArgs>
+    file?: boolean | users$fileArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type usersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
-    objects: {}
+    objects: {
+      folders: Prisma.$folderPayload<ExtArgs>[]
+      file: Prisma.$filePayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       firstname: string
@@ -1601,6 +1866,8 @@ export namespace Prisma {
    */
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    folders<T extends users$foldersArgs<ExtArgs> = {}>(args?: Subset<T, users$foldersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    file<T extends users$fileArgs<ExtArgs> = {}>(args?: Subset<T, users$fileArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1653,6 +1920,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where: usersWhereUniqueInput
@@ -1671,6 +1942,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where: usersWhereUniqueInput
@@ -1688,6 +1963,10 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
     /**
      * Filter, which users to fetch.
      */
@@ -1737,6 +2016,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -1785,6 +2068,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -1827,6 +2114,10 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
     /**
      * The data needed to create a users.
      */
@@ -1875,6 +2166,10 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
     /**
      * The data needed to update a users.
      */
@@ -1942,6 +2237,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * The filter to search for the users to update in case it exists.
      */
     where: usersWhereUniqueInput
@@ -1968,6 +2267,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter which users to delete.
      */
     where: usersWhereUniqueInput
@@ -1988,6 +2291,54 @@ export namespace Prisma {
   }
 
   /**
+   * users.folders
+   */
+  export type users$foldersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    where?: folderWhereInput
+    orderBy?: folderOrderByWithRelationInput | folderOrderByWithRelationInput[]
+    cursor?: folderWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FolderScalarFieldEnum | FolderScalarFieldEnum[]
+  }
+
+  /**
+   * users.file
+   */
+  export type users$fileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    where?: fileWhereInput
+    orderBy?: fileOrderByWithRelationInput | fileOrderByWithRelationInput[]
+    cursor?: fileWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
    * users without action
    */
   export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1999,6 +2350,2281 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model folder
+   */
+
+  export type AggregateFolder = {
+    _count: FolderCountAggregateOutputType | null
+    _avg: FolderAvgAggregateOutputType | null
+    _sum: FolderSumAggregateOutputType | null
+    _min: FolderMinAggregateOutputType | null
+    _max: FolderMaxAggregateOutputType | null
+  }
+
+  export type FolderAvgAggregateOutputType = {
+    owner_id: number | null
+  }
+
+  export type FolderSumAggregateOutputType = {
+    owner_id: number | null
+  }
+
+  export type FolderMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    date_created: Date | null
+    date_updated: Date | null
+    owner_id: number | null
+  }
+
+  export type FolderMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    date_created: Date | null
+    date_updated: Date | null
+    owner_id: number | null
+  }
+
+  export type FolderCountAggregateOutputType = {
+    id: number
+    name: number
+    date_created: number
+    date_updated: number
+    owner_id: number
+    _all: number
+  }
+
+
+  export type FolderAvgAggregateInputType = {
+    owner_id?: true
+  }
+
+  export type FolderSumAggregateInputType = {
+    owner_id?: true
+  }
+
+  export type FolderMinAggregateInputType = {
+    id?: true
+    name?: true
+    date_created?: true
+    date_updated?: true
+    owner_id?: true
+  }
+
+  export type FolderMaxAggregateInputType = {
+    id?: true
+    name?: true
+    date_created?: true
+    date_updated?: true
+    owner_id?: true
+  }
+
+  export type FolderCountAggregateInputType = {
+    id?: true
+    name?: true
+    date_created?: true
+    date_updated?: true
+    owner_id?: true
+    _all?: true
+  }
+
+  export type FolderAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which folder to aggregate.
+     */
+    where?: folderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of folders to fetch.
+     */
+    orderBy?: folderOrderByWithRelationInput | folderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: folderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` folders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` folders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned folders
+    **/
+    _count?: true | FolderCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FolderAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FolderSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FolderMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FolderMaxAggregateInputType
+  }
+
+  export type GetFolderAggregateType<T extends FolderAggregateArgs> = {
+        [P in keyof T & keyof AggregateFolder]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFolder[P]>
+      : GetScalarType<T[P], AggregateFolder[P]>
+  }
+
+
+
+
+  export type folderGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: folderWhereInput
+    orderBy?: folderOrderByWithAggregationInput | folderOrderByWithAggregationInput[]
+    by: FolderScalarFieldEnum[] | FolderScalarFieldEnum
+    having?: folderScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FolderCountAggregateInputType | true
+    _avg?: FolderAvgAggregateInputType
+    _sum?: FolderSumAggregateInputType
+    _min?: FolderMinAggregateInputType
+    _max?: FolderMaxAggregateInputType
+  }
+
+  export type FolderGroupByOutputType = {
+    id: string
+    name: string
+    date_created: Date
+    date_updated: Date
+    owner_id: number
+    _count: FolderCountAggregateOutputType | null
+    _avg: FolderAvgAggregateOutputType | null
+    _sum: FolderSumAggregateOutputType | null
+    _min: FolderMinAggregateOutputType | null
+    _max: FolderMaxAggregateOutputType | null
+  }
+
+  type GetFolderGroupByPayload<T extends folderGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FolderGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FolderGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FolderGroupByOutputType[P]>
+            : GetScalarType<T[P], FolderGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type folderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    date_created?: boolean
+    date_updated?: boolean
+    owner_id?: boolean
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    files?: boolean | folder$filesArgs<ExtArgs>
+    _count?: boolean | FolderCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["folder"]>
+
+  export type folderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    date_created?: boolean
+    date_updated?: boolean
+    owner_id?: boolean
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["folder"]>
+
+  export type folderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    date_created?: boolean
+    date_updated?: boolean
+    owner_id?: boolean
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["folder"]>
+
+  export type folderSelectScalar = {
+    id?: boolean
+    name?: boolean
+    date_created?: boolean
+    date_updated?: boolean
+    owner_id?: boolean
+  }
+
+  export type folderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date_created" | "date_updated" | "owner_id", ExtArgs["result"]["folder"]>
+  export type folderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    files?: boolean | folder$filesArgs<ExtArgs>
+    _count?: boolean | FolderCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type folderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type folderIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+  }
+
+  export type $folderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "folder"
+    objects: {
+      owner: Prisma.$usersPayload<ExtArgs>
+      files: Prisma.$filePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      date_created: Date
+      date_updated: Date
+      owner_id: number
+    }, ExtArgs["result"]["folder"]>
+    composites: {}
+  }
+
+  type folderGetPayload<S extends boolean | null | undefined | folderDefaultArgs> = $Result.GetResult<Prisma.$folderPayload, S>
+
+  type folderCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<folderFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FolderCountAggregateInputType | true
+    }
+
+  export interface folderDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['folder'], meta: { name: 'folder' } }
+    /**
+     * Find zero or one Folder that matches the filter.
+     * @param {folderFindUniqueArgs} args - Arguments to find a Folder
+     * @example
+     * // Get one Folder
+     * const folder = await prisma.folder.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends folderFindUniqueArgs>(args: SelectSubset<T, folderFindUniqueArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Folder that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {folderFindUniqueOrThrowArgs} args - Arguments to find a Folder
+     * @example
+     * // Get one Folder
+     * const folder = await prisma.folder.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends folderFindUniqueOrThrowArgs>(args: SelectSubset<T, folderFindUniqueOrThrowArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Folder that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {folderFindFirstArgs} args - Arguments to find a Folder
+     * @example
+     * // Get one Folder
+     * const folder = await prisma.folder.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends folderFindFirstArgs>(args?: SelectSubset<T, folderFindFirstArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Folder that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {folderFindFirstOrThrowArgs} args - Arguments to find a Folder
+     * @example
+     * // Get one Folder
+     * const folder = await prisma.folder.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends folderFindFirstOrThrowArgs>(args?: SelectSubset<T, folderFindFirstOrThrowArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Folders that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {folderFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Folders
+     * const folders = await prisma.folder.findMany()
+     * 
+     * // Get first 10 Folders
+     * const folders = await prisma.folder.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const folderWithIdOnly = await prisma.folder.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends folderFindManyArgs>(args?: SelectSubset<T, folderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Folder.
+     * @param {folderCreateArgs} args - Arguments to create a Folder.
+     * @example
+     * // Create one Folder
+     * const Folder = await prisma.folder.create({
+     *   data: {
+     *     // ... data to create a Folder
+     *   }
+     * })
+     * 
+     */
+    create<T extends folderCreateArgs>(args: SelectSubset<T, folderCreateArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Folders.
+     * @param {folderCreateManyArgs} args - Arguments to create many Folders.
+     * @example
+     * // Create many Folders
+     * const folder = await prisma.folder.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends folderCreateManyArgs>(args?: SelectSubset<T, folderCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Folders and returns the data saved in the database.
+     * @param {folderCreateManyAndReturnArgs} args - Arguments to create many Folders.
+     * @example
+     * // Create many Folders
+     * const folder = await prisma.folder.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Folders and only return the `id`
+     * const folderWithIdOnly = await prisma.folder.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends folderCreateManyAndReturnArgs>(args?: SelectSubset<T, folderCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Folder.
+     * @param {folderDeleteArgs} args - Arguments to delete one Folder.
+     * @example
+     * // Delete one Folder
+     * const Folder = await prisma.folder.delete({
+     *   where: {
+     *     // ... filter to delete one Folder
+     *   }
+     * })
+     * 
+     */
+    delete<T extends folderDeleteArgs>(args: SelectSubset<T, folderDeleteArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Folder.
+     * @param {folderUpdateArgs} args - Arguments to update one Folder.
+     * @example
+     * // Update one Folder
+     * const folder = await prisma.folder.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends folderUpdateArgs>(args: SelectSubset<T, folderUpdateArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Folders.
+     * @param {folderDeleteManyArgs} args - Arguments to filter Folders to delete.
+     * @example
+     * // Delete a few Folders
+     * const { count } = await prisma.folder.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends folderDeleteManyArgs>(args?: SelectSubset<T, folderDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Folders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {folderUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Folders
+     * const folder = await prisma.folder.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends folderUpdateManyArgs>(args: SelectSubset<T, folderUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Folders and returns the data updated in the database.
+     * @param {folderUpdateManyAndReturnArgs} args - Arguments to update many Folders.
+     * @example
+     * // Update many Folders
+     * const folder = await prisma.folder.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Folders and only return the `id`
+     * const folderWithIdOnly = await prisma.folder.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends folderUpdateManyAndReturnArgs>(args: SelectSubset<T, folderUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Folder.
+     * @param {folderUpsertArgs} args - Arguments to update or create a Folder.
+     * @example
+     * // Update or create a Folder
+     * const folder = await prisma.folder.upsert({
+     *   create: {
+     *     // ... data to create a Folder
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Folder we want to update
+     *   }
+     * })
+     */
+    upsert<T extends folderUpsertArgs>(args: SelectSubset<T, folderUpsertArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Folders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {folderCountArgs} args - Arguments to filter Folders to count.
+     * @example
+     * // Count the number of Folders
+     * const count = await prisma.folder.count({
+     *   where: {
+     *     // ... the filter for the Folders we want to count
+     *   }
+     * })
+    **/
+    count<T extends folderCountArgs>(
+      args?: Subset<T, folderCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FolderCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Folder.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FolderAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FolderAggregateArgs>(args: Subset<T, FolderAggregateArgs>): Prisma.PrismaPromise<GetFolderAggregateType<T>>
+
+    /**
+     * Group by Folder.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {folderGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends folderGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: folderGroupByArgs['orderBy'] }
+        : { orderBy?: folderGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, folderGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFolderGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the folder model
+   */
+  readonly fields: folderFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for folder.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__folderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    owner<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    files<T extends folder$filesArgs<ExtArgs> = {}>(args?: Subset<T, folder$filesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the folder model
+   */
+  interface folderFieldRefs {
+    readonly id: FieldRef<"folder", 'String'>
+    readonly name: FieldRef<"folder", 'String'>
+    readonly date_created: FieldRef<"folder", 'DateTime'>
+    readonly date_updated: FieldRef<"folder", 'DateTime'>
+    readonly owner_id: FieldRef<"folder", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * folder findUnique
+   */
+  export type folderFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * Filter, which folder to fetch.
+     */
+    where: folderWhereUniqueInput
+  }
+
+  /**
+   * folder findUniqueOrThrow
+   */
+  export type folderFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * Filter, which folder to fetch.
+     */
+    where: folderWhereUniqueInput
+  }
+
+  /**
+   * folder findFirst
+   */
+  export type folderFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * Filter, which folder to fetch.
+     */
+    where?: folderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of folders to fetch.
+     */
+    orderBy?: folderOrderByWithRelationInput | folderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for folders.
+     */
+    cursor?: folderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` folders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` folders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of folders.
+     */
+    distinct?: FolderScalarFieldEnum | FolderScalarFieldEnum[]
+  }
+
+  /**
+   * folder findFirstOrThrow
+   */
+  export type folderFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * Filter, which folder to fetch.
+     */
+    where?: folderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of folders to fetch.
+     */
+    orderBy?: folderOrderByWithRelationInput | folderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for folders.
+     */
+    cursor?: folderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` folders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` folders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of folders.
+     */
+    distinct?: FolderScalarFieldEnum | FolderScalarFieldEnum[]
+  }
+
+  /**
+   * folder findMany
+   */
+  export type folderFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * Filter, which folders to fetch.
+     */
+    where?: folderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of folders to fetch.
+     */
+    orderBy?: folderOrderByWithRelationInput | folderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing folders.
+     */
+    cursor?: folderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` folders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` folders.
+     */
+    skip?: number
+    distinct?: FolderScalarFieldEnum | FolderScalarFieldEnum[]
+  }
+
+  /**
+   * folder create
+   */
+  export type folderCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * The data needed to create a folder.
+     */
+    data: XOR<folderCreateInput, folderUncheckedCreateInput>
+  }
+
+  /**
+   * folder createMany
+   */
+  export type folderCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many folders.
+     */
+    data: folderCreateManyInput | folderCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * folder createManyAndReturn
+   */
+  export type folderCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * The data used to create many folders.
+     */
+    data: folderCreateManyInput | folderCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * folder update
+   */
+  export type folderUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * The data needed to update a folder.
+     */
+    data: XOR<folderUpdateInput, folderUncheckedUpdateInput>
+    /**
+     * Choose, which folder to update.
+     */
+    where: folderWhereUniqueInput
+  }
+
+  /**
+   * folder updateMany
+   */
+  export type folderUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update folders.
+     */
+    data: XOR<folderUpdateManyMutationInput, folderUncheckedUpdateManyInput>
+    /**
+     * Filter which folders to update
+     */
+    where?: folderWhereInput
+    /**
+     * Limit how many folders to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * folder updateManyAndReturn
+   */
+  export type folderUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * The data used to update folders.
+     */
+    data: XOR<folderUpdateManyMutationInput, folderUncheckedUpdateManyInput>
+    /**
+     * Filter which folders to update
+     */
+    where?: folderWhereInput
+    /**
+     * Limit how many folders to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * folder upsert
+   */
+  export type folderUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * The filter to search for the folder to update in case it exists.
+     */
+    where: folderWhereUniqueInput
+    /**
+     * In case the folder found by the `where` argument doesn't exist, create a new folder with this data.
+     */
+    create: XOR<folderCreateInput, folderUncheckedCreateInput>
+    /**
+     * In case the folder was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<folderUpdateInput, folderUncheckedUpdateInput>
+  }
+
+  /**
+   * folder delete
+   */
+  export type folderDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    /**
+     * Filter which folder to delete.
+     */
+    where: folderWhereUniqueInput
+  }
+
+  /**
+   * folder deleteMany
+   */
+  export type folderDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which folders to delete
+     */
+    where?: folderWhereInput
+    /**
+     * Limit how many folders to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * folder.files
+   */
+  export type folder$filesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    where?: fileWhereInput
+    orderBy?: fileOrderByWithRelationInput | fileOrderByWithRelationInput[]
+    cursor?: fileWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
+   * folder without action
+   */
+  export type folderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model file
+   */
+
+  export type AggregateFile = {
+    _count: FileCountAggregateOutputType | null
+    _avg: FileAvgAggregateOutputType | null
+    _sum: FileSumAggregateOutputType | null
+    _min: FileMinAggregateOutputType | null
+    _max: FileMaxAggregateOutputType | null
+  }
+
+  export type FileAvgAggregateOutputType = {
+    size: number | null
+    owner_id: number | null
+  }
+
+  export type FileSumAggregateOutputType = {
+    size: number | null
+    owner_id: number | null
+  }
+
+  export type FileMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    upload_date: Date | null
+    size: number | null
+    owner_id: number | null
+    folder_id: string | null
+    file_url: string | null
+  }
+
+  export type FileMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    upload_date: Date | null
+    size: number | null
+    owner_id: number | null
+    folder_id: string | null
+    file_url: string | null
+  }
+
+  export type FileCountAggregateOutputType = {
+    id: number
+    name: number
+    upload_date: number
+    size: number
+    owner_id: number
+    folder_id: number
+    file_url: number
+    _all: number
+  }
+
+
+  export type FileAvgAggregateInputType = {
+    size?: true
+    owner_id?: true
+  }
+
+  export type FileSumAggregateInputType = {
+    size?: true
+    owner_id?: true
+  }
+
+  export type FileMinAggregateInputType = {
+    id?: true
+    name?: true
+    upload_date?: true
+    size?: true
+    owner_id?: true
+    folder_id?: true
+    file_url?: true
+  }
+
+  export type FileMaxAggregateInputType = {
+    id?: true
+    name?: true
+    upload_date?: true
+    size?: true
+    owner_id?: true
+    folder_id?: true
+    file_url?: true
+  }
+
+  export type FileCountAggregateInputType = {
+    id?: true
+    name?: true
+    upload_date?: true
+    size?: true
+    owner_id?: true
+    folder_id?: true
+    file_url?: true
+    _all?: true
+  }
+
+  export type FileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which file to aggregate.
+     */
+    where?: fileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of files to fetch.
+     */
+    orderBy?: fileOrderByWithRelationInput | fileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: fileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` files.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned files
+    **/
+    _count?: true | FileCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FileAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FileSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FileMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FileMaxAggregateInputType
+  }
+
+  export type GetFileAggregateType<T extends FileAggregateArgs> = {
+        [P in keyof T & keyof AggregateFile]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFile[P]>
+      : GetScalarType<T[P], AggregateFile[P]>
+  }
+
+
+
+
+  export type fileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: fileWhereInput
+    orderBy?: fileOrderByWithAggregationInput | fileOrderByWithAggregationInput[]
+    by: FileScalarFieldEnum[] | FileScalarFieldEnum
+    having?: fileScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FileCountAggregateInputType | true
+    _avg?: FileAvgAggregateInputType
+    _sum?: FileSumAggregateInputType
+    _min?: FileMinAggregateInputType
+    _max?: FileMaxAggregateInputType
+  }
+
+  export type FileGroupByOutputType = {
+    id: string
+    name: string
+    upload_date: Date
+    size: number
+    owner_id: number
+    folder_id: string | null
+    file_url: string
+    _count: FileCountAggregateOutputType | null
+    _avg: FileAvgAggregateOutputType | null
+    _sum: FileSumAggregateOutputType | null
+    _min: FileMinAggregateOutputType | null
+    _max: FileMaxAggregateOutputType | null
+  }
+
+  type GetFileGroupByPayload<T extends fileGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FileGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FileGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FileGroupByOutputType[P]>
+            : GetScalarType<T[P], FileGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type fileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    upload_date?: boolean
+    size?: boolean
+    owner_id?: boolean
+    folder_id?: boolean
+    file_url?: boolean
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    folder?: boolean | file$folderArgs<ExtArgs>
+  }, ExtArgs["result"]["file"]>
+
+  export type fileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    upload_date?: boolean
+    size?: boolean
+    owner_id?: boolean
+    folder_id?: boolean
+    file_url?: boolean
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    folder?: boolean | file$folderArgs<ExtArgs>
+  }, ExtArgs["result"]["file"]>
+
+  export type fileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    upload_date?: boolean
+    size?: boolean
+    owner_id?: boolean
+    folder_id?: boolean
+    file_url?: boolean
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    folder?: boolean | file$folderArgs<ExtArgs>
+  }, ExtArgs["result"]["file"]>
+
+  export type fileSelectScalar = {
+    id?: boolean
+    name?: boolean
+    upload_date?: boolean
+    size?: boolean
+    owner_id?: boolean
+    folder_id?: boolean
+    file_url?: boolean
+  }
+
+  export type fileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "upload_date" | "size" | "owner_id" | "folder_id" | "file_url", ExtArgs["result"]["file"]>
+  export type fileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    folder?: boolean | file$folderArgs<ExtArgs>
+  }
+  export type fileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    folder?: boolean | file$folderArgs<ExtArgs>
+  }
+  export type fileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | usersDefaultArgs<ExtArgs>
+    folder?: boolean | file$folderArgs<ExtArgs>
+  }
+
+  export type $filePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "file"
+    objects: {
+      owner: Prisma.$usersPayload<ExtArgs>
+      folder: Prisma.$folderPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      upload_date: Date
+      size: number
+      owner_id: number
+      folder_id: string | null
+      file_url: string
+    }, ExtArgs["result"]["file"]>
+    composites: {}
+  }
+
+  type fileGetPayload<S extends boolean | null | undefined | fileDefaultArgs> = $Result.GetResult<Prisma.$filePayload, S>
+
+  type fileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<fileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FileCountAggregateInputType | true
+    }
+
+  export interface fileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['file'], meta: { name: 'file' } }
+    /**
+     * Find zero or one File that matches the filter.
+     * @param {fileFindUniqueArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends fileFindUniqueArgs>(args: SelectSubset<T, fileFindUniqueArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one File that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {fileFindUniqueOrThrowArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends fileFindUniqueOrThrowArgs>(args: SelectSubset<T, fileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first File that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fileFindFirstArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends fileFindFirstArgs>(args?: SelectSubset<T, fileFindFirstArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first File that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fileFindFirstOrThrowArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends fileFindFirstOrThrowArgs>(args?: SelectSubset<T, fileFindFirstOrThrowArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Files that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Files
+     * const files = await prisma.file.findMany()
+     * 
+     * // Get first 10 Files
+     * const files = await prisma.file.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const fileWithIdOnly = await prisma.file.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends fileFindManyArgs>(args?: SelectSubset<T, fileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a File.
+     * @param {fileCreateArgs} args - Arguments to create a File.
+     * @example
+     * // Create one File
+     * const File = await prisma.file.create({
+     *   data: {
+     *     // ... data to create a File
+     *   }
+     * })
+     * 
+     */
+    create<T extends fileCreateArgs>(args: SelectSubset<T, fileCreateArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Files.
+     * @param {fileCreateManyArgs} args - Arguments to create many Files.
+     * @example
+     * // Create many Files
+     * const file = await prisma.file.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends fileCreateManyArgs>(args?: SelectSubset<T, fileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Files and returns the data saved in the database.
+     * @param {fileCreateManyAndReturnArgs} args - Arguments to create many Files.
+     * @example
+     * // Create many Files
+     * const file = await prisma.file.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Files and only return the `id`
+     * const fileWithIdOnly = await prisma.file.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends fileCreateManyAndReturnArgs>(args?: SelectSubset<T, fileCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a File.
+     * @param {fileDeleteArgs} args - Arguments to delete one File.
+     * @example
+     * // Delete one File
+     * const File = await prisma.file.delete({
+     *   where: {
+     *     // ... filter to delete one File
+     *   }
+     * })
+     * 
+     */
+    delete<T extends fileDeleteArgs>(args: SelectSubset<T, fileDeleteArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one File.
+     * @param {fileUpdateArgs} args - Arguments to update one File.
+     * @example
+     * // Update one File
+     * const file = await prisma.file.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends fileUpdateArgs>(args: SelectSubset<T, fileUpdateArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Files.
+     * @param {fileDeleteManyArgs} args - Arguments to filter Files to delete.
+     * @example
+     * // Delete a few Files
+     * const { count } = await prisma.file.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends fileDeleteManyArgs>(args?: SelectSubset<T, fileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Files.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Files
+     * const file = await prisma.file.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends fileUpdateManyArgs>(args: SelectSubset<T, fileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Files and returns the data updated in the database.
+     * @param {fileUpdateManyAndReturnArgs} args - Arguments to update many Files.
+     * @example
+     * // Update many Files
+     * const file = await prisma.file.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Files and only return the `id`
+     * const fileWithIdOnly = await prisma.file.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends fileUpdateManyAndReturnArgs>(args: SelectSubset<T, fileUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one File.
+     * @param {fileUpsertArgs} args - Arguments to update or create a File.
+     * @example
+     * // Update or create a File
+     * const file = await prisma.file.upsert({
+     *   create: {
+     *     // ... data to create a File
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the File we want to update
+     *   }
+     * })
+     */
+    upsert<T extends fileUpsertArgs>(args: SelectSubset<T, fileUpsertArgs<ExtArgs>>): Prisma__fileClient<$Result.GetResult<Prisma.$filePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Files.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fileCountArgs} args - Arguments to filter Files to count.
+     * @example
+     * // Count the number of Files
+     * const count = await prisma.file.count({
+     *   where: {
+     *     // ... the filter for the Files we want to count
+     *   }
+     * })
+    **/
+    count<T extends fileCountArgs>(
+      args?: Subset<T, fileCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FileCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a File.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FileAggregateArgs>(args: Subset<T, FileAggregateArgs>): Prisma.PrismaPromise<GetFileAggregateType<T>>
+
+    /**
+     * Group by File.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {fileGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends fileGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: fileGroupByArgs['orderBy'] }
+        : { orderBy?: fileGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, fileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the file model
+   */
+  readonly fields: fileFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for file.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__fileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    owner<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    folder<T extends file$folderArgs<ExtArgs> = {}>(args?: Subset<T, file$folderArgs<ExtArgs>>): Prisma__folderClient<$Result.GetResult<Prisma.$folderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the file model
+   */
+  interface fileFieldRefs {
+    readonly id: FieldRef<"file", 'String'>
+    readonly name: FieldRef<"file", 'String'>
+    readonly upload_date: FieldRef<"file", 'DateTime'>
+    readonly size: FieldRef<"file", 'Int'>
+    readonly owner_id: FieldRef<"file", 'Int'>
+    readonly folder_id: FieldRef<"file", 'String'>
+    readonly file_url: FieldRef<"file", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * file findUnique
+   */
+  export type fileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * Filter, which file to fetch.
+     */
+    where: fileWhereUniqueInput
+  }
+
+  /**
+   * file findUniqueOrThrow
+   */
+  export type fileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * Filter, which file to fetch.
+     */
+    where: fileWhereUniqueInput
+  }
+
+  /**
+   * file findFirst
+   */
+  export type fileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * Filter, which file to fetch.
+     */
+    where?: fileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of files to fetch.
+     */
+    orderBy?: fileOrderByWithRelationInput | fileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for files.
+     */
+    cursor?: fileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` files.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of files.
+     */
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
+   * file findFirstOrThrow
+   */
+  export type fileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * Filter, which file to fetch.
+     */
+    where?: fileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of files to fetch.
+     */
+    orderBy?: fileOrderByWithRelationInput | fileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for files.
+     */
+    cursor?: fileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` files.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of files.
+     */
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
+   * file findMany
+   */
+  export type fileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * Filter, which files to fetch.
+     */
+    where?: fileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of files to fetch.
+     */
+    orderBy?: fileOrderByWithRelationInput | fileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing files.
+     */
+    cursor?: fileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` files.
+     */
+    skip?: number
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
+   * file create
+   */
+  export type fileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * The data needed to create a file.
+     */
+    data: XOR<fileCreateInput, fileUncheckedCreateInput>
+  }
+
+  /**
+   * file createMany
+   */
+  export type fileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many files.
+     */
+    data: fileCreateManyInput | fileCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * file createManyAndReturn
+   */
+  export type fileCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * The data used to create many files.
+     */
+    data: fileCreateManyInput | fileCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * file update
+   */
+  export type fileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * The data needed to update a file.
+     */
+    data: XOR<fileUpdateInput, fileUncheckedUpdateInput>
+    /**
+     * Choose, which file to update.
+     */
+    where: fileWhereUniqueInput
+  }
+
+  /**
+   * file updateMany
+   */
+  export type fileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update files.
+     */
+    data: XOR<fileUpdateManyMutationInput, fileUncheckedUpdateManyInput>
+    /**
+     * Filter which files to update
+     */
+    where?: fileWhereInput
+    /**
+     * Limit how many files to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * file updateManyAndReturn
+   */
+  export type fileUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * The data used to update files.
+     */
+    data: XOR<fileUpdateManyMutationInput, fileUncheckedUpdateManyInput>
+    /**
+     * Filter which files to update
+     */
+    where?: fileWhereInput
+    /**
+     * Limit how many files to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * file upsert
+   */
+  export type fileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * The filter to search for the file to update in case it exists.
+     */
+    where: fileWhereUniqueInput
+    /**
+     * In case the file found by the `where` argument doesn't exist, create a new file with this data.
+     */
+    create: XOR<fileCreateInput, fileUncheckedCreateInput>
+    /**
+     * In case the file was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<fileUpdateInput, fileUncheckedUpdateInput>
+  }
+
+  /**
+   * file delete
+   */
+  export type fileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
+    /**
+     * Filter which file to delete.
+     */
+    where: fileWhereUniqueInput
+  }
+
+  /**
+   * file deleteMany
+   */
+  export type fileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which files to delete
+     */
+    where?: fileWhereInput
+    /**
+     * Limit how many files to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * file.folder
+   */
+  export type file$folderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the folder
+     */
+    select?: folderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the folder
+     */
+    omit?: folderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: folderInclude<ExtArgs> | null
+    where?: folderWhereInput
+  }
+
+  /**
+   * file without action
+   */
+  export type fileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the file
+     */
+    select?: fileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the file
+     */
+    omit?: fileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: fileInclude<ExtArgs> | null
   }
 
 
@@ -3010,6 +5636,30 @@ export namespace Prisma {
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+  export const FolderScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    date_created: 'date_created',
+    date_updated: 'date_updated',
+    owner_id: 'owner_id'
+  };
+
+  export type FolderScalarFieldEnum = (typeof FolderScalarFieldEnum)[keyof typeof FolderScalarFieldEnum]
+
+
+  export const FileScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    upload_date: 'upload_date',
+    size: 'size',
+    owner_id: 'owner_id',
+    folder_id: 'folder_id',
+    file_url: 'file_url'
+  };
+
+  export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
   export const SessionScalarFieldEnum: {
     id: 'id',
     sid: 'sid',
@@ -3034,6 +5684,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3110,6 +5768,8 @@ export namespace Prisma {
     email?: StringFilter<"users"> | string
     date_created?: DateTimeFilter<"users"> | Date | string
     hashed_password?: StringFilter<"users"> | string
+    folders?: FolderListRelationFilter
+    file?: FileListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -3119,6 +5779,8 @@ export namespace Prisma {
     email?: SortOrder
     date_created?: SortOrder
     hashed_password?: SortOrder
+    folders?: folderOrderByRelationAggregateInput
+    file?: fileOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -3131,6 +5793,8 @@ export namespace Prisma {
     lastname?: StringFilter<"users"> | string
     date_created?: DateTimeFilter<"users"> | Date | string
     hashed_password?: StringFilter<"users"> | string
+    folders?: FolderListRelationFilter
+    file?: FileListRelationFilter
   }, "id" | "email">
 
   export type usersOrderByWithAggregationInput = {
@@ -3157,6 +5821,136 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"users"> | string
     date_created?: DateTimeWithAggregatesFilter<"users"> | Date | string
     hashed_password?: StringWithAggregatesFilter<"users"> | string
+  }
+
+  export type folderWhereInput = {
+    AND?: folderWhereInput | folderWhereInput[]
+    OR?: folderWhereInput[]
+    NOT?: folderWhereInput | folderWhereInput[]
+    id?: StringFilter<"folder"> | string
+    name?: StringFilter<"folder"> | string
+    date_created?: DateTimeFilter<"folder"> | Date | string
+    date_updated?: DateTimeFilter<"folder"> | Date | string
+    owner_id?: IntFilter<"folder"> | number
+    owner?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    files?: FileListRelationFilter
+  }
+
+  export type folderOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date_created?: SortOrder
+    date_updated?: SortOrder
+    owner_id?: SortOrder
+    owner?: usersOrderByWithRelationInput
+    files?: fileOrderByRelationAggregateInput
+  }
+
+  export type folderWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: folderWhereInput | folderWhereInput[]
+    OR?: folderWhereInput[]
+    NOT?: folderWhereInput | folderWhereInput[]
+    name?: StringFilter<"folder"> | string
+    date_created?: DateTimeFilter<"folder"> | Date | string
+    date_updated?: DateTimeFilter<"folder"> | Date | string
+    owner_id?: IntFilter<"folder"> | number
+    owner?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    files?: FileListRelationFilter
+  }, "id">
+
+  export type folderOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date_created?: SortOrder
+    date_updated?: SortOrder
+    owner_id?: SortOrder
+    _count?: folderCountOrderByAggregateInput
+    _avg?: folderAvgOrderByAggregateInput
+    _max?: folderMaxOrderByAggregateInput
+    _min?: folderMinOrderByAggregateInput
+    _sum?: folderSumOrderByAggregateInput
+  }
+
+  export type folderScalarWhereWithAggregatesInput = {
+    AND?: folderScalarWhereWithAggregatesInput | folderScalarWhereWithAggregatesInput[]
+    OR?: folderScalarWhereWithAggregatesInput[]
+    NOT?: folderScalarWhereWithAggregatesInput | folderScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"folder"> | string
+    name?: StringWithAggregatesFilter<"folder"> | string
+    date_created?: DateTimeWithAggregatesFilter<"folder"> | Date | string
+    date_updated?: DateTimeWithAggregatesFilter<"folder"> | Date | string
+    owner_id?: IntWithAggregatesFilter<"folder"> | number
+  }
+
+  export type fileWhereInput = {
+    AND?: fileWhereInput | fileWhereInput[]
+    OR?: fileWhereInput[]
+    NOT?: fileWhereInput | fileWhereInput[]
+    id?: StringFilter<"file"> | string
+    name?: StringFilter<"file"> | string
+    upload_date?: DateTimeFilter<"file"> | Date | string
+    size?: IntFilter<"file"> | number
+    owner_id?: IntFilter<"file"> | number
+    folder_id?: StringNullableFilter<"file"> | string | null
+    file_url?: StringFilter<"file"> | string
+    owner?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    folder?: XOR<FolderNullableScalarRelationFilter, folderWhereInput> | null
+  }
+
+  export type fileOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    upload_date?: SortOrder
+    size?: SortOrder
+    owner_id?: SortOrder
+    folder_id?: SortOrderInput | SortOrder
+    file_url?: SortOrder
+    owner?: usersOrderByWithRelationInput
+    folder?: folderOrderByWithRelationInput
+  }
+
+  export type fileWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: fileWhereInput | fileWhereInput[]
+    OR?: fileWhereInput[]
+    NOT?: fileWhereInput | fileWhereInput[]
+    name?: StringFilter<"file"> | string
+    upload_date?: DateTimeFilter<"file"> | Date | string
+    size?: IntFilter<"file"> | number
+    owner_id?: IntFilter<"file"> | number
+    folder_id?: StringNullableFilter<"file"> | string | null
+    file_url?: StringFilter<"file"> | string
+    owner?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    folder?: XOR<FolderNullableScalarRelationFilter, folderWhereInput> | null
+  }, "id">
+
+  export type fileOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    upload_date?: SortOrder
+    size?: SortOrder
+    owner_id?: SortOrder
+    folder_id?: SortOrderInput | SortOrder
+    file_url?: SortOrder
+    _count?: fileCountOrderByAggregateInput
+    _avg?: fileAvgOrderByAggregateInput
+    _max?: fileMaxOrderByAggregateInput
+    _min?: fileMinOrderByAggregateInput
+    _sum?: fileSumOrderByAggregateInput
+  }
+
+  export type fileScalarWhereWithAggregatesInput = {
+    AND?: fileScalarWhereWithAggregatesInput | fileScalarWhereWithAggregatesInput[]
+    OR?: fileScalarWhereWithAggregatesInput[]
+    NOT?: fileScalarWhereWithAggregatesInput | fileScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"file"> | string
+    name?: StringWithAggregatesFilter<"file"> | string
+    upload_date?: DateTimeWithAggregatesFilter<"file"> | Date | string
+    size?: IntWithAggregatesFilter<"file"> | number
+    owner_id?: IntWithAggregatesFilter<"file"> | number
+    folder_id?: StringNullableWithAggregatesFilter<"file"> | string | null
+    file_url?: StringWithAggregatesFilter<"file"> | string
   }
 
   export type SessionWhereInput = {
@@ -3212,6 +6006,8 @@ export namespace Prisma {
     email: string
     date_created?: Date | string
     hashed_password: string
+    folders?: folderCreateNestedManyWithoutOwnerInput
+    file?: fileCreateNestedManyWithoutOwnerInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -3221,6 +6017,8 @@ export namespace Prisma {
     email: string
     date_created?: Date | string
     hashed_password: string
+    folders?: folderUncheckedCreateNestedManyWithoutOwnerInput
+    file?: fileUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type usersUpdateInput = {
@@ -3229,6 +6027,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     date_created?: DateTimeFieldUpdateOperationsInput | Date | string
     hashed_password?: StringFieldUpdateOperationsInput | string
+    folders?: folderUpdateManyWithoutOwnerNestedInput
+    file?: fileUpdateManyWithoutOwnerNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -3238,6 +6038,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     date_created?: DateTimeFieldUpdateOperationsInput | Date | string
     hashed_password?: StringFieldUpdateOperationsInput | string
+    folders?: folderUncheckedUpdateManyWithoutOwnerNestedInput
+    file?: fileUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -3264,6 +6066,133 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     date_created?: DateTimeFieldUpdateOperationsInput | Date | string
     hashed_password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type folderCreateInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+    owner: usersCreateNestedOneWithoutFoldersInput
+    files?: fileCreateNestedManyWithoutFolderInput
+  }
+
+  export type folderUncheckedCreateInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+    owner_id: number
+    files?: fileUncheckedCreateNestedManyWithoutFolderInput
+  }
+
+  export type folderUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: usersUpdateOneRequiredWithoutFoldersNestedInput
+    files?: fileUpdateManyWithoutFolderNestedInput
+  }
+
+  export type folderUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner_id?: IntFieldUpdateOperationsInput | number
+    files?: fileUncheckedUpdateManyWithoutFolderNestedInput
+  }
+
+  export type folderCreateManyInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+    owner_id: number
+  }
+
+  export type folderUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type folderUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type fileCreateInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    file_url: string
+    owner: usersCreateNestedOneWithoutFileInput
+    folder?: folderCreateNestedOneWithoutFilesInput
+  }
+
+  export type fileUncheckedCreateInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    owner_id: number
+    folder_id?: string | null
+    file_url: string
+  }
+
+  export type fileUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    file_url?: StringFieldUpdateOperationsInput | string
+    owner?: usersUpdateOneRequiredWithoutFileNestedInput
+    folder?: folderUpdateOneWithoutFilesNestedInput
+  }
+
+  export type fileUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    owner_id?: IntFieldUpdateOperationsInput | number
+    folder_id?: NullableStringFieldUpdateOperationsInput | string | null
+    file_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type fileCreateManyInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    owner_id: number
+    folder_id?: string | null
+    file_url: string
+  }
+
+  export type fileUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    file_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type fileUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    owner_id?: IntFieldUpdateOperationsInput | number
+    folder_id?: NullableStringFieldUpdateOperationsInput | string | null
+    file_url?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionCreateInput = {
@@ -3352,6 +6281,26 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type FolderListRelationFilter = {
+    every?: folderWhereInput
+    some?: folderWhereInput
+    none?: folderWhereInput
+  }
+
+  export type FileListRelationFilter = {
+    every?: fileWhereInput
+    some?: fileWhereInput
+    none?: fileWhereInput
+  }
+
+  export type folderOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type fileOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type usersCountOrderByAggregateInput = {
     id?: SortOrder
     firstname?: SortOrder
@@ -3435,6 +6384,126 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type UsersScalarRelationFilter = {
+    is?: usersWhereInput
+    isNot?: usersWhereInput
+  }
+
+  export type folderCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date_created?: SortOrder
+    date_updated?: SortOrder
+    owner_id?: SortOrder
+  }
+
+  export type folderAvgOrderByAggregateInput = {
+    owner_id?: SortOrder
+  }
+
+  export type folderMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date_created?: SortOrder
+    date_updated?: SortOrder
+    owner_id?: SortOrder
+  }
+
+  export type folderMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date_created?: SortOrder
+    date_updated?: SortOrder
+    owner_id?: SortOrder
+  }
+
+  export type folderSumOrderByAggregateInput = {
+    owner_id?: SortOrder
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type FolderNullableScalarRelationFilter = {
+    is?: folderWhereInput | null
+    isNot?: folderWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type fileCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    upload_date?: SortOrder
+    size?: SortOrder
+    owner_id?: SortOrder
+    folder_id?: SortOrder
+    file_url?: SortOrder
+  }
+
+  export type fileAvgOrderByAggregateInput = {
+    size?: SortOrder
+    owner_id?: SortOrder
+  }
+
+  export type fileMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    upload_date?: SortOrder
+    size?: SortOrder
+    owner_id?: SortOrder
+    folder_id?: SortOrder
+    file_url?: SortOrder
+  }
+
+  export type fileMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    upload_date?: SortOrder
+    size?: SortOrder
+    owner_id?: SortOrder
+    folder_id?: SortOrder
+    file_url?: SortOrder
+  }
+
+  export type fileSumOrderByAggregateInput = {
+    size?: SortOrder
+    owner_id?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type SessionCountOrderByAggregateInput = {
     id?: SortOrder
     sid?: SortOrder
@@ -3456,6 +6525,34 @@ export namespace Prisma {
     expiresAt?: SortOrder
   }
 
+  export type folderCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<folderCreateWithoutOwnerInput, folderUncheckedCreateWithoutOwnerInput> | folderCreateWithoutOwnerInput[] | folderUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: folderCreateOrConnectWithoutOwnerInput | folderCreateOrConnectWithoutOwnerInput[]
+    createMany?: folderCreateManyOwnerInputEnvelope
+    connect?: folderWhereUniqueInput | folderWhereUniqueInput[]
+  }
+
+  export type fileCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<fileCreateWithoutOwnerInput, fileUncheckedCreateWithoutOwnerInput> | fileCreateWithoutOwnerInput[] | fileUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutOwnerInput | fileCreateOrConnectWithoutOwnerInput[]
+    createMany?: fileCreateManyOwnerInputEnvelope
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+  }
+
+  export type folderUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<folderCreateWithoutOwnerInput, folderUncheckedCreateWithoutOwnerInput> | folderCreateWithoutOwnerInput[] | folderUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: folderCreateOrConnectWithoutOwnerInput | folderCreateOrConnectWithoutOwnerInput[]
+    createMany?: folderCreateManyOwnerInputEnvelope
+    connect?: folderWhereUniqueInput | folderWhereUniqueInput[]
+  }
+
+  export type fileUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<fileCreateWithoutOwnerInput, fileUncheckedCreateWithoutOwnerInput> | fileCreateWithoutOwnerInput[] | fileUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutOwnerInput | fileCreateOrConnectWithoutOwnerInput[]
+    createMany?: fileCreateManyOwnerInputEnvelope
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -3464,12 +6561,158 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type folderUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<folderCreateWithoutOwnerInput, folderUncheckedCreateWithoutOwnerInput> | folderCreateWithoutOwnerInput[] | folderUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: folderCreateOrConnectWithoutOwnerInput | folderCreateOrConnectWithoutOwnerInput[]
+    upsert?: folderUpsertWithWhereUniqueWithoutOwnerInput | folderUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: folderCreateManyOwnerInputEnvelope
+    set?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    disconnect?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    delete?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    connect?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    update?: folderUpdateWithWhereUniqueWithoutOwnerInput | folderUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: folderUpdateManyWithWhereWithoutOwnerInput | folderUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: folderScalarWhereInput | folderScalarWhereInput[]
+  }
+
+  export type fileUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<fileCreateWithoutOwnerInput, fileUncheckedCreateWithoutOwnerInput> | fileCreateWithoutOwnerInput[] | fileUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutOwnerInput | fileCreateOrConnectWithoutOwnerInput[]
+    upsert?: fileUpsertWithWhereUniqueWithoutOwnerInput | fileUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: fileCreateManyOwnerInputEnvelope
+    set?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    disconnect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    delete?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    update?: fileUpdateWithWhereUniqueWithoutOwnerInput | fileUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: fileUpdateManyWithWhereWithoutOwnerInput | fileUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: fileScalarWhereInput | fileScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type folderUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<folderCreateWithoutOwnerInput, folderUncheckedCreateWithoutOwnerInput> | folderCreateWithoutOwnerInput[] | folderUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: folderCreateOrConnectWithoutOwnerInput | folderCreateOrConnectWithoutOwnerInput[]
+    upsert?: folderUpsertWithWhereUniqueWithoutOwnerInput | folderUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: folderCreateManyOwnerInputEnvelope
+    set?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    disconnect?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    delete?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    connect?: folderWhereUniqueInput | folderWhereUniqueInput[]
+    update?: folderUpdateWithWhereUniqueWithoutOwnerInput | folderUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: folderUpdateManyWithWhereWithoutOwnerInput | folderUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: folderScalarWhereInput | folderScalarWhereInput[]
+  }
+
+  export type fileUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<fileCreateWithoutOwnerInput, fileUncheckedCreateWithoutOwnerInput> | fileCreateWithoutOwnerInput[] | fileUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutOwnerInput | fileCreateOrConnectWithoutOwnerInput[]
+    upsert?: fileUpsertWithWhereUniqueWithoutOwnerInput | fileUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: fileCreateManyOwnerInputEnvelope
+    set?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    disconnect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    delete?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    update?: fileUpdateWithWhereUniqueWithoutOwnerInput | fileUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: fileUpdateManyWithWhereWithoutOwnerInput | fileUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: fileScalarWhereInput | fileScalarWhereInput[]
+  }
+
+  export type usersCreateNestedOneWithoutFoldersInput = {
+    create?: XOR<usersCreateWithoutFoldersInput, usersUncheckedCreateWithoutFoldersInput>
+    connectOrCreate?: usersCreateOrConnectWithoutFoldersInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type fileCreateNestedManyWithoutFolderInput = {
+    create?: XOR<fileCreateWithoutFolderInput, fileUncheckedCreateWithoutFolderInput> | fileCreateWithoutFolderInput[] | fileUncheckedCreateWithoutFolderInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutFolderInput | fileCreateOrConnectWithoutFolderInput[]
+    createMany?: fileCreateManyFolderInputEnvelope
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+  }
+
+  export type fileUncheckedCreateNestedManyWithoutFolderInput = {
+    create?: XOR<fileCreateWithoutFolderInput, fileUncheckedCreateWithoutFolderInput> | fileCreateWithoutFolderInput[] | fileUncheckedCreateWithoutFolderInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutFolderInput | fileCreateOrConnectWithoutFolderInput[]
+    createMany?: fileCreateManyFolderInputEnvelope
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+  }
+
+  export type usersUpdateOneRequiredWithoutFoldersNestedInput = {
+    create?: XOR<usersCreateWithoutFoldersInput, usersUncheckedCreateWithoutFoldersInput>
+    connectOrCreate?: usersCreateOrConnectWithoutFoldersInput
+    upsert?: usersUpsertWithoutFoldersInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutFoldersInput, usersUpdateWithoutFoldersInput>, usersUncheckedUpdateWithoutFoldersInput>
+  }
+
+  export type fileUpdateManyWithoutFolderNestedInput = {
+    create?: XOR<fileCreateWithoutFolderInput, fileUncheckedCreateWithoutFolderInput> | fileCreateWithoutFolderInput[] | fileUncheckedCreateWithoutFolderInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutFolderInput | fileCreateOrConnectWithoutFolderInput[]
+    upsert?: fileUpsertWithWhereUniqueWithoutFolderInput | fileUpsertWithWhereUniqueWithoutFolderInput[]
+    createMany?: fileCreateManyFolderInputEnvelope
+    set?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    disconnect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    delete?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    update?: fileUpdateWithWhereUniqueWithoutFolderInput | fileUpdateWithWhereUniqueWithoutFolderInput[]
+    updateMany?: fileUpdateManyWithWhereWithoutFolderInput | fileUpdateManyWithWhereWithoutFolderInput[]
+    deleteMany?: fileScalarWhereInput | fileScalarWhereInput[]
+  }
+
+  export type fileUncheckedUpdateManyWithoutFolderNestedInput = {
+    create?: XOR<fileCreateWithoutFolderInput, fileUncheckedCreateWithoutFolderInput> | fileCreateWithoutFolderInput[] | fileUncheckedCreateWithoutFolderInput[]
+    connectOrCreate?: fileCreateOrConnectWithoutFolderInput | fileCreateOrConnectWithoutFolderInput[]
+    upsert?: fileUpsertWithWhereUniqueWithoutFolderInput | fileUpsertWithWhereUniqueWithoutFolderInput[]
+    createMany?: fileCreateManyFolderInputEnvelope
+    set?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    disconnect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    delete?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    connect?: fileWhereUniqueInput | fileWhereUniqueInput[]
+    update?: fileUpdateWithWhereUniqueWithoutFolderInput | fileUpdateWithWhereUniqueWithoutFolderInput[]
+    updateMany?: fileUpdateManyWithWhereWithoutFolderInput | fileUpdateManyWithWhereWithoutFolderInput[]
+    deleteMany?: fileScalarWhereInput | fileScalarWhereInput[]
+  }
+
+  export type usersCreateNestedOneWithoutFileInput = {
+    create?: XOR<usersCreateWithoutFileInput, usersUncheckedCreateWithoutFileInput>
+    connectOrCreate?: usersCreateOrConnectWithoutFileInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type folderCreateNestedOneWithoutFilesInput = {
+    create?: XOR<folderCreateWithoutFilesInput, folderUncheckedCreateWithoutFilesInput>
+    connectOrCreate?: folderCreateOrConnectWithoutFilesInput
+    connect?: folderWhereUniqueInput
+  }
+
+  export type usersUpdateOneRequiredWithoutFileNestedInput = {
+    create?: XOR<usersCreateWithoutFileInput, usersUncheckedCreateWithoutFileInput>
+    connectOrCreate?: usersCreateOrConnectWithoutFileInput
+    upsert?: usersUpsertWithoutFileInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutFileInput, usersUpdateWithoutFileInput>, usersUncheckedUpdateWithoutFileInput>
+  }
+
+  export type folderUpdateOneWithoutFilesNestedInput = {
+    create?: XOR<folderCreateWithoutFilesInput, folderUncheckedCreateWithoutFilesInput>
+    connectOrCreate?: folderCreateOrConnectWithoutFilesInput
+    upsert?: folderUpsertWithoutFilesInput
+    disconnect?: folderWhereInput | boolean
+    delete?: folderWhereInput | boolean
+    connect?: folderWhereUniqueInput
+    update?: XOR<XOR<folderUpdateToOneWithWhereWithoutFilesInput, folderUpdateWithoutFilesInput>, folderUncheckedUpdateWithoutFilesInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3564,6 +6807,460 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type folderCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+    files?: fileCreateNestedManyWithoutFolderInput
+  }
+
+  export type folderUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+    files?: fileUncheckedCreateNestedManyWithoutFolderInput
+  }
+
+  export type folderCreateOrConnectWithoutOwnerInput = {
+    where: folderWhereUniqueInput
+    create: XOR<folderCreateWithoutOwnerInput, folderUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type folderCreateManyOwnerInputEnvelope = {
+    data: folderCreateManyOwnerInput | folderCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type fileCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    file_url: string
+    folder?: folderCreateNestedOneWithoutFilesInput
+  }
+
+  export type fileUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    folder_id?: string | null
+    file_url: string
+  }
+
+  export type fileCreateOrConnectWithoutOwnerInput = {
+    where: fileWhereUniqueInput
+    create: XOR<fileCreateWithoutOwnerInput, fileUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type fileCreateManyOwnerInputEnvelope = {
+    data: fileCreateManyOwnerInput | fileCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type folderUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: folderWhereUniqueInput
+    update: XOR<folderUpdateWithoutOwnerInput, folderUncheckedUpdateWithoutOwnerInput>
+    create: XOR<folderCreateWithoutOwnerInput, folderUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type folderUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: folderWhereUniqueInput
+    data: XOR<folderUpdateWithoutOwnerInput, folderUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type folderUpdateManyWithWhereWithoutOwnerInput = {
+    where: folderScalarWhereInput
+    data: XOR<folderUpdateManyMutationInput, folderUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type folderScalarWhereInput = {
+    AND?: folderScalarWhereInput | folderScalarWhereInput[]
+    OR?: folderScalarWhereInput[]
+    NOT?: folderScalarWhereInput | folderScalarWhereInput[]
+    id?: StringFilter<"folder"> | string
+    name?: StringFilter<"folder"> | string
+    date_created?: DateTimeFilter<"folder"> | Date | string
+    date_updated?: DateTimeFilter<"folder"> | Date | string
+    owner_id?: IntFilter<"folder"> | number
+  }
+
+  export type fileUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: fileWhereUniqueInput
+    update: XOR<fileUpdateWithoutOwnerInput, fileUncheckedUpdateWithoutOwnerInput>
+    create: XOR<fileCreateWithoutOwnerInput, fileUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type fileUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: fileWhereUniqueInput
+    data: XOR<fileUpdateWithoutOwnerInput, fileUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type fileUpdateManyWithWhereWithoutOwnerInput = {
+    where: fileScalarWhereInput
+    data: XOR<fileUpdateManyMutationInput, fileUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type fileScalarWhereInput = {
+    AND?: fileScalarWhereInput | fileScalarWhereInput[]
+    OR?: fileScalarWhereInput[]
+    NOT?: fileScalarWhereInput | fileScalarWhereInput[]
+    id?: StringFilter<"file"> | string
+    name?: StringFilter<"file"> | string
+    upload_date?: DateTimeFilter<"file"> | Date | string
+    size?: IntFilter<"file"> | number
+    owner_id?: IntFilter<"file"> | number
+    folder_id?: StringNullableFilter<"file"> | string | null
+    file_url?: StringFilter<"file"> | string
+  }
+
+  export type usersCreateWithoutFoldersInput = {
+    firstname: string
+    lastname: string
+    email: string
+    date_created?: Date | string
+    hashed_password: string
+    file?: fileCreateNestedManyWithoutOwnerInput
+  }
+
+  export type usersUncheckedCreateWithoutFoldersInput = {
+    id?: number
+    firstname: string
+    lastname: string
+    email: string
+    date_created?: Date | string
+    hashed_password: string
+    file?: fileUncheckedCreateNestedManyWithoutOwnerInput
+  }
+
+  export type usersCreateOrConnectWithoutFoldersInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutFoldersInput, usersUncheckedCreateWithoutFoldersInput>
+  }
+
+  export type fileCreateWithoutFolderInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    file_url: string
+    owner: usersCreateNestedOneWithoutFileInput
+  }
+
+  export type fileUncheckedCreateWithoutFolderInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    owner_id: number
+    file_url: string
+  }
+
+  export type fileCreateOrConnectWithoutFolderInput = {
+    where: fileWhereUniqueInput
+    create: XOR<fileCreateWithoutFolderInput, fileUncheckedCreateWithoutFolderInput>
+  }
+
+  export type fileCreateManyFolderInputEnvelope = {
+    data: fileCreateManyFolderInput | fileCreateManyFolderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type usersUpsertWithoutFoldersInput = {
+    update: XOR<usersUpdateWithoutFoldersInput, usersUncheckedUpdateWithoutFoldersInput>
+    create: XOR<usersCreateWithoutFoldersInput, usersUncheckedCreateWithoutFoldersInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutFoldersInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutFoldersInput, usersUncheckedUpdateWithoutFoldersInput>
+  }
+
+  export type usersUpdateWithoutFoldersInput = {
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    hashed_password?: StringFieldUpdateOperationsInput | string
+    file?: fileUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutFoldersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    hashed_password?: StringFieldUpdateOperationsInput | string
+    file?: fileUncheckedUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type fileUpsertWithWhereUniqueWithoutFolderInput = {
+    where: fileWhereUniqueInput
+    update: XOR<fileUpdateWithoutFolderInput, fileUncheckedUpdateWithoutFolderInput>
+    create: XOR<fileCreateWithoutFolderInput, fileUncheckedCreateWithoutFolderInput>
+  }
+
+  export type fileUpdateWithWhereUniqueWithoutFolderInput = {
+    where: fileWhereUniqueInput
+    data: XOR<fileUpdateWithoutFolderInput, fileUncheckedUpdateWithoutFolderInput>
+  }
+
+  export type fileUpdateManyWithWhereWithoutFolderInput = {
+    where: fileScalarWhereInput
+    data: XOR<fileUpdateManyMutationInput, fileUncheckedUpdateManyWithoutFolderInput>
+  }
+
+  export type usersCreateWithoutFileInput = {
+    firstname: string
+    lastname: string
+    email: string
+    date_created?: Date | string
+    hashed_password: string
+    folders?: folderCreateNestedManyWithoutOwnerInput
+  }
+
+  export type usersUncheckedCreateWithoutFileInput = {
+    id?: number
+    firstname: string
+    lastname: string
+    email: string
+    date_created?: Date | string
+    hashed_password: string
+    folders?: folderUncheckedCreateNestedManyWithoutOwnerInput
+  }
+
+  export type usersCreateOrConnectWithoutFileInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutFileInput, usersUncheckedCreateWithoutFileInput>
+  }
+
+  export type folderCreateWithoutFilesInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+    owner: usersCreateNestedOneWithoutFoldersInput
+  }
+
+  export type folderUncheckedCreateWithoutFilesInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+    owner_id: number
+  }
+
+  export type folderCreateOrConnectWithoutFilesInput = {
+    where: folderWhereUniqueInput
+    create: XOR<folderCreateWithoutFilesInput, folderUncheckedCreateWithoutFilesInput>
+  }
+
+  export type usersUpsertWithoutFileInput = {
+    update: XOR<usersUpdateWithoutFileInput, usersUncheckedUpdateWithoutFileInput>
+    create: XOR<usersCreateWithoutFileInput, usersUncheckedCreateWithoutFileInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutFileInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutFileInput, usersUncheckedUpdateWithoutFileInput>
+  }
+
+  export type usersUpdateWithoutFileInput = {
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    hashed_password?: StringFieldUpdateOperationsInput | string
+    folders?: folderUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutFileInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    hashed_password?: StringFieldUpdateOperationsInput | string
+    folders?: folderUncheckedUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type folderUpsertWithoutFilesInput = {
+    update: XOR<folderUpdateWithoutFilesInput, folderUncheckedUpdateWithoutFilesInput>
+    create: XOR<folderCreateWithoutFilesInput, folderUncheckedCreateWithoutFilesInput>
+    where?: folderWhereInput
+  }
+
+  export type folderUpdateToOneWithWhereWithoutFilesInput = {
+    where?: folderWhereInput
+    data: XOR<folderUpdateWithoutFilesInput, folderUncheckedUpdateWithoutFilesInput>
+  }
+
+  export type folderUpdateWithoutFilesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: usersUpdateOneRequiredWithoutFoldersNestedInput
+  }
+
+  export type folderUncheckedUpdateWithoutFilesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type folderCreateManyOwnerInput = {
+    id?: string
+    name: string
+    date_created?: Date | string
+    date_updated?: Date | string
+  }
+
+  export type fileCreateManyOwnerInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    folder_id?: string | null
+    file_url: string
+  }
+
+  export type folderUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    files?: fileUpdateManyWithoutFolderNestedInput
+  }
+
+  export type folderUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    files?: fileUncheckedUpdateManyWithoutFolderNestedInput
+  }
+
+  export type folderUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    date_created?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_updated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type fileUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    file_url?: StringFieldUpdateOperationsInput | string
+    folder?: folderUpdateOneWithoutFilesNestedInput
+  }
+
+  export type fileUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    folder_id?: NullableStringFieldUpdateOperationsInput | string | null
+    file_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type fileUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    folder_id?: NullableStringFieldUpdateOperationsInput | string | null
+    file_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type fileCreateManyFolderInput = {
+    id?: string
+    name: string
+    upload_date?: Date | string
+    size: number
+    owner_id: number
+    file_url: string
+  }
+
+  export type fileUpdateWithoutFolderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    file_url?: StringFieldUpdateOperationsInput | string
+    owner?: usersUpdateOneRequiredWithoutFileNestedInput
+  }
+
+  export type fileUncheckedUpdateWithoutFolderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    owner_id?: IntFieldUpdateOperationsInput | number
+    file_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type fileUncheckedUpdateManyWithoutFolderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    upload_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    size?: IntFieldUpdateOperationsInput | number
+    owner_id?: IntFieldUpdateOperationsInput | number
+    file_url?: StringFieldUpdateOperationsInput | string
   }
 
 

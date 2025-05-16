@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>My files</title>
+  </head>
+  <body>
+    <h1>My Files</h1>
+    <% if (files.length > 0) { %>
+    <p>these are your files</p>
+    <ul style="display: flex; flex-direction: column; gap: 20px">
+      <% files.forEach((file) => { %>
+      <li style="display: flex; flex-direction: column; gap: 5px">
+        <p>File name : <%= file.name %></p>
+        <img src="<%= file.file_url %>" alt="image <%= file.name %>" />
+        <p>upload date : <%= file.upload_date %></p>
+        <p>Size : <%= file.size / 1000 %> KB</p>
+      </li>
+      <%})%>
+    </ul>
+    <%} else {%>
+    <p>You have no files, files you add will appear here</p>
+    <% } %>
+    <div class="cta-my-files">
+      <button>
+        <a href="/upload">Upload a file</a>
+      </button>
+      <button>
+        <a href="/my-folders"> Create a folder </a>
+      </button>
+    </div>
+  </body>
+</html>
