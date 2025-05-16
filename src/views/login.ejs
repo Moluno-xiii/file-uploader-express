@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h2>Login form</h2>
+
+    <% if (message) { %>
+    <p class="error"><%= message %></p>
+    <%}%>
+    <form action="/login" method="post">
+      <section class="form-item">
+        <label for="email"> Email </label>
+        <input type="text" name="email" required autofocus />
+      </section>
+      <section class="form-item">
+        <label for="password">Password</label>
+        <input name="password" required type="password" />
+      </section>
+      <button type="submit">submit</button>
+    </form>
+    <span>Don't have an account? <a href="/signup">Sign up</a></span>
+  </body>
+</html>
