@@ -1,6 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 import upload from "../middlewares/multerUpload";
 import prisma from "..";
+import authCheck from "../middlewares/authCheck";
 
 const uploadFileRoute = Router();
 
@@ -18,8 +19,8 @@ uploadFileRoute.get("/", async (req: Request, res: Response) => {
 uploadFileRoute.post(
   "/",
   upload.single("file"),
+  authCheck,
   async (req: Request, res: Response, next: NextFunction) => {
-    console.log("file uploaded", req.file);
     await prisma.file.create({
       data: {
         name: req.file?.originalname as string,
@@ -29,9 +30,7 @@ uploadFileRoute.post(
         folder_id: req.body.folderId !== "none" ? req.body.folderId : null,
       },
     });
-    console.log("request body :", req.body);
     res.redirect("/my-files");
-    // res.json({ message: "file uploaded successfully" });
   }
 );
 

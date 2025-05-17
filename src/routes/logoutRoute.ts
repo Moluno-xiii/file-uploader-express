@@ -6,12 +6,7 @@ logoutRoute.get("/", (req: Request, res: Response, next: NextFunction) => {
     if (err) return next(err);
   });
 
-  // req.session.destroy((err) => {
-  //   if (err) return next(err);
-
-  //   res.clearCookie("connect-sid");
   res.redirect("/");
-  // });
 });
 
 export default logoutRoute;

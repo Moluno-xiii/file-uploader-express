@@ -42,7 +42,6 @@ app.use(passport.authenticate("session"));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.locals.currentUser = req.user;
-  console.log(req.user);
   next();
 });
 

@@ -1,16 +1,15 @@
 import { Router, Request, Response } from "express";
 import prisma from "..";
+import authCheck from "../middlewares/authCheck";
 const myFilesRoute = Router();
 
-myFilesRoute.get("/", async (req: Request, res: Response) => {
-  console.log("user details : ", req.user);
+myFilesRoute.get("/", authCheck, async (req: Request, res: Response) => {
   const files = await prisma.file.findMany({
     where: {
       owner_id: (req.user as any).id,
       folder_id: null,
     },
   });
-  console.log("user files :", files);
   res.render("myFiles", { files });
 });
 
